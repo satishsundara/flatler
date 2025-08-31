@@ -1,18 +1,20 @@
-import home from '../assets/images/postproperty_Amenities.svg'
+import { ReactComponent as Amenities } from '../assets/images/postproperty_Amenities.svg';
 import editAdd from '../assets/images/edit-post-add.png'
 import plus from '../assets/images/plus-lcn.png'
 import flatSample from '../assets/images/flat-image.png'
 import leftArrrDark from '../assets/images/left-arrow-dark.png'
 import rightArrowLight from '../assets/images/right-arrow-light.png'
-import addressIcon from '../assets/images/postproperty_Address.svg'
-import expencesIcon from '../assets/images/postproperty_Expenses.svg'
-import preferencesIcon from '../assets/images/postproperty_Preferences.svg'
+import { ReactComponent as AddressIcon } from '../assets/images/postproperty_Address.svg';
+import { ReactComponent as ExpensesIcon } from '../assets/images/postproperty_Expenses.svg';
+import { ReactComponent as PreferencesIcon } from '../assets/images/postproperty_Preferences.svg';
 import forSaleIcon from '../assets/images/postproperty_For Sale.svg'
-import photoIcon from '../assets/images/postproperty_Photos.svg'
+import { ReactComponent as PhotosIcon } from '../assets/images/postproperty_Photos.svg';
 import deleteFixedExp from '../assets/images/delete_fixed_exp.png'
 import deleteTrash from '../assets/images/delete_trash.png'
 import { useEffect, useRef, useState } from 'react'
 import { postProperty } from '../apiRoutes'
+import { ReactComponent as Forsaleitem } from '../assets/images/postproperty_For Sale.svg'
+import { ReactComponent as addressItem } from '../assets/images/postproperty_Address.svg'
 import {
     GoogleMap,
     LoadScript,
@@ -21,7 +23,7 @@ import {
 } from "@react-google-maps/api";
 
 const containerStyle = { width: "100%", height: "400px" };
-const defaultCenter = { lat: 17.385044, lng: 78.486671 }; 
+const defaultCenter = { lat: 17.385044, lng: 78.486671 };
 const PostProperty = () => {
 
     const [sharingType, setSharingType] = useState(null);
@@ -328,13 +330,14 @@ const PostProperty = () => {
             </div>
             <div className="post-property-section d-flex">
                 <div className="section-one">
-                    <p className='active'><img src={home} className='pe-2' />Property</p>
-                    <p><img src={addressIcon} className='pe-2' />Address</p>
-                    <p><img src={expencesIcon} className='pe-2' />Expenses</p>
-                    <p><img src={preferencesIcon} className='pe-2' />Preferences</p>
-                    <p><img src={forSaleIcon} className='pe-2' />For Sale</p>
-                    <p><img src={photoIcon} className='pe-2' />Photos</p>
+                    <p className="active"><Amenities /> Property</p>
+                    <p><AddressIcon /> Address</p>
+                    <p><ExpensesIcon /> Expenses</p>
+                    <p><PreferencesIcon /> Preferences</p>
+                    <p><Forsaleitem /> For Sale</p>
+                    <p><PhotosIcon /> Photos</p>
                 </div>
+
                 <div className="section-two">
                     <div className='section amenities'>
                         <p>Amenities</p>
@@ -460,42 +463,42 @@ const PostProperty = () => {
                         <p>Address</p>
                         <div className='row'>
                             <div className='col-12'>
-                                 <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
-                                <div className="section-box address-map-box d-flex">
-                                    {/* Left side: Map + Search */}
-                                    <div className="w-50 pe-2">
-                                    <Autocomplete
-                                        onLoad={(ref) => (autoCompleteRef.current = ref)}
-                                        onPlaceChanged={onPlaceChanged}
-                                    >
-                                        <input
-                                        type="text"
-                                        placeholder="Search address..."
-                                        className="form-control mb-2"
-                                        />
-                                    </Autocomplete>
-                                    <button className="btn btn-primary mb-2" onClick={handleLocateMe}>
-                                        📍 Locate Me
-                                    </button>
+                                <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
+                                    <div className="section-box address-map-box d-flex">
+                                        {/* Left side: Map + Search */}
+                                        <div className="w-50 pe-2">
+                                            <Autocomplete
+                                                onLoad={(ref) => (autoCompleteRef.current = ref)}
+                                                onPlaceChanged={onPlaceChanged}
+                                            >
+                                                <input
+                                                    type="text"
+                                                    placeholder="Search address..."
+                                                    className="form-control mb-2"
+                                                />
+                                            </Autocomplete>
+                                            <button className="btn btn-primary mb-2" onClick={handleLocateMe}>
+                                                📍 Locate Me
+                                            </button>
 
-                                    <GoogleMap
-                                        mapContainerStyle={containerStyle}
-                                        center={center}
-                                        zoom={15}
-                                        onClick={handleMapClick}
-                                    >
-                                        <Marker position={markerPos} />
-                                    </GoogleMap>
-                                    </div>
+                                            <GoogleMap
+                                                mapContainerStyle={containerStyle}
+                                                center={center}
+                                                zoom={15}
+                                                onClick={handleMapClick}
+                                            >
+                                                <Marker position={markerPos} />
+                                            </GoogleMap>
+                                        </div>
 
-                                    {/* Right side: Address Display */}
-                                    <div className="w-50 ps-3">
-                                    <div className="mb-3">
-                                        <p><strong>Selected Address</strong></p>
-                                        <span>{address || "No address selected"}</span>
+                                        {/* Right side: Address Display */}
+                                        <div className="w-50 ps-3">
+                                            <div className="mb-3">
+                                                <p><strong>Selected Address</strong></p>
+                                                <span>{address || "No address selected"}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    </div>
-                                </div>
                                 </LoadScript>
                             </div>
 

@@ -7,10 +7,10 @@ import fav from '../assets/images/Fav-flat.png'
 import shareFlat from '../assets/images/share-flat.png'
 import farwordFlat from '../assets/images/forword-flat.png'
 import flatImg from '../assets/images/flat-image.png'
-import homeAmt from '../assets/images/Amenities.svg'
-import expences from '../assets/images/Expences.svg'
-import preferences from '../assets/images/Preferences.svg'
-import forSale from '../assets/images/For Sale.svg'
+import { ReactComponent as HomeAmt } from '../assets/images/Amenities.svg';
+import { ReactComponent as Expences } from '../assets/images/Expences.svg';
+import { ReactComponent as Preferences } from '../assets/images/Preferences.svg';
+import { ReactComponent as ForSale } from '../assets/images/For Sale.svg';
 import flatSampleTwo from '../assets/images/flat-sample-2.jpg'
 const ViewFlat = () => {
     const [activeSection, setActiveSection] = useState('amenities');
@@ -18,11 +18,11 @@ const ViewFlat = () => {
     const handleNavClick = (id) => {
         const container = document.querySelector('.flat-detalis-view .flat-details');
         const section = document.getElementById(id);
-        
+
         if (container && section) {
             container.scrollTo({
-            top: section.offsetTop - container.offsetTop, // relative scroll
-            behavior: 'smooth'
+                top: section.offsetTop - container.offsetTop, // relative scroll
+                behavior: 'smooth'
             });
             setActiveSection(id);
         }
@@ -173,27 +173,35 @@ const ViewFlat = () => {
                             className={`nav-link ${activeSection === 'amenities' ? 'active' : ''}`}
                             onClick={() => handleNavClick('amenities')}
                         >
-                            <img src={homeAmt} className='me-2' />Amenities
+                            <HomeAmt width={18} height={18} className="me-2" />
+                            Amenities
                         </a>
+
                         <a
                             className={`nav-link ${activeSection === 'expences' ? 'active' : ''}`}
                             onClick={() => handleNavClick('expences')}
                         >
-                            <img src={expences} className='me-2' />Expences
+                            <Expences width={18} height={18} className="me-2" />
+                            Expences
                         </a>
+
                         <a
                             className={`nav-link ${activeSection === 'preferences' ? 'active' : ''}`}
                             onClick={() => handleNavClick('preferences')}
                         >
-                            <img src={preferences} className='me-2' />Preferences
+                            <Preferences width={18} height={18} className="me-2" />
+                            Preferences
                         </a>
+
                         <a
                             className={`nav-link ${activeSection === 'for-sale' ? 'active' : ''}`}
                             onClick={() => handleNavClick('for-sale')}
                         >
-                            <img src={forSale} className='me-2' />For Sale
+                            <ForSale width={18} height={18} className="me-2" />
+                            For Sale
                         </a>
                     </nav>
+
 
                     <div className='flat-details'>
                         <div className='amenities section' id='amenities'>
